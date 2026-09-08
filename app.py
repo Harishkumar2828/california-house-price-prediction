@@ -1,9 +1,12 @@
 from flask import Flask, request, render_template
 import joblib
+import gzip
 
 app = Flask(__name__)
 
-model = joblib.load("california_housing_pipeline.pkl")
+model = joblib.load(
+    gzip.open("california_housing_pipeline.pkl.gz", "rb")
+)
 
 @app.route("/")
 def home():

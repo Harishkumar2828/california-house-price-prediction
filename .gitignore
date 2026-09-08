@@ -6,3 +6,4 @@ env/
 .ipynb_checkpoints/
 .vscode/
 *.pkl
+!california_housing_pipeline.pkl.gz
