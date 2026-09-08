@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>California House Price Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            width: 500px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            text-align: center;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        .error {
+            margin-top: 25px;
+            padding: 15px;
+            text-align: center;
+            background-color: #ffe6e6;
+            border-radius: 5px;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>California House Price Prediction</h1>
+
+        <form action="/predict" method="post">
+
+            <label>Median Income:</label>
+            <input type="number" step="any" name="MedInc" value="{{ med_inc if med_inc is defined else '' }}" required>
+
+            <label>House Age:</label>
+            <input type="number" step="any" name="HouseAge" value="{{ house_age if house_age is defined else '' }}" required>
+
+            <label>Average Rooms:</label>
+            <input type="number" step="any" name="AveRooms" value="{{ ave_rooms if ave_rooms is defined else '' }}" required>
+
+            <label>Average Bedrooms:</label>
+            <input type="number" step="any" name="AveBedrms" value="{{ ave_bedrms if ave_bedrms is defined else '' }}" required>
+
+            <label>Population:</label>
+            <input type="number" step="any" name="Population" value="{{ population if population is defined else '' }}" required>
+
+            <label>Average Occupancy:</label>
+            <input type="number" step="any" name="AveOccup" value="{{ ave_occup if ave_occup is defined else '' }}" required>
+
+            <label>Latitude:</label>
+            <input type="number" step="any" name="Latitude" value="{{ latitude if latitude is defined else '' }}" required>
+
+            <label>Longitude:</label>
+            <input type="number" step="any" name="Longitude" value="{{ longitude if longitude is defined else '' }}" required>
+
+            <button type="submit">Predict House Value</button>
+
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                <h2>Predicted House Value</h2>
+                <h2>${{ "{:,.2f}".format(prediction) }}</h2>
+            </div>
+        {% endif %}
+
+        {% if error %}
+    <div class="error">
+        <h3>{{ error }}</h3>
+    </div>
+{% endif %}
+
+    </div>
+
+</body>
+</html>
