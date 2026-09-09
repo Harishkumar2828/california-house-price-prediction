@@ -1,11 +1,17 @@
 from flask import Flask, request, render_template
 import joblib
 import gzip
+import os
 
 app = Flask(__name__)
 
+model_path = os.path.join(
+    os.path.dirname(__file__),
+    "california_housing_pipeline.pkl.gz"
+)
+
 model = joblib.load(
-    gzip.open("california_housing_pipeline.pkl.gz", "rb")
+    gzip.open(model_path, "rb")
 )
 
 @app.route("/")
