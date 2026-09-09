@@ -1,10 +1,19 @@
-# California House Price Prediction
+# 🏠 California House Price Prediction
 
-An end-to-end Machine Learning project that predicts California house prices using a trained Random Forest regression model and deploys the model as a Flask web application.
+An end-to-end Machine Learning project that predicts California house prices using a Random Forest Regression model and deploys the trained model as a Flask web application on Vercel.
 
-## Project Overview
+## 🚀 Live Demo
 
-This project uses the California Housing dataset to build a regression model that predicts the median house value based on eight features:
+🔗 **Live Application:**  
+https://california-house-price-prediction-delta.vercel.app/
+
+---
+
+## 📌 Project Overview
+
+This project demonstrates a complete Machine Learning workflow, starting from data exploration and model development to model serialization and deployment as a web application.
+
+The model predicts the median house value based on eight features from the California Housing dataset:
 
 - Median Income
 - House Age
@@ -15,109 +24,70 @@ This project uses the California Housing dataset to build a regression model tha
 - Latitude
 - Longitude
 
-The trained machine learning Pipeline is saved using Joblib and integrated into a Flask application.
+The final model is integrated with a Flask application where users can enter property details through a web interface and receive a predicted house value.
 
-## Machine Learning Workflow
+---
 
-The project follows this workflow:
+## 🎯 Objective
+
+The main objective of this project is to build and deploy an end-to-end Machine Learning solution capable of:
+
+- Analyzing the California Housing dataset
+- Training multiple regression models
+- Comparing model performance
+- Tuning the best-performing model
+- Saving the trained model
+- Integrating the model with Flask
+- Creating a web-based prediction interface
+- Deploying the application to the cloud
+
+---
+
+## 🧠 Machine Learning Workflow
+
+The project follows the following workflow:
 
 1. Load the California Housing dataset
-2. Separate features and target
-3. Split the dataset into training and testing sets
-4. Build a preprocessing Pipeline
-5. Train Decision Tree and Random Forest models
-6. Evaluate models using R² score
-7. Tune the Random Forest model
-8. Select the best-performing model
-9. Save the trained Pipeline using Joblib
-10. Build a Flask API
-11. Create an HTML frontend
-12. Connect the frontend to the trained ML model
+2. Perform exploratory data analysis
+3. Inspect dataset shape, columns, data types and statistics
+4. Separate features and target variable
+5. Split the dataset into training and testing sets
+6. Train a Linear Regression model
+7. Train a Decision Tree Regressor
+8. Tune the Decision Tree using GridSearchCV
+9. Train a Random Forest Regressor
+10. Tune the Random Forest using GridSearchCV
+11. Evaluate models using R², MSE and RMSE
+12. Select the best-performing Random Forest model
+13. Save the trained model using Joblib
+14. Compress the model using Gzip
+15. Build a Flask web application
+16. Connect the web interface to the trained model
+17. Deploy the application using Vercel
 
-## Model Performance
+---
 
-The final model is a tuned Random Forest Regressor.
+## 🤖 Machine Learning Model
 
-**Test R² Score: 0.8047**
+Several regression algorithms were evaluated during development:
 
-The tuned Random Forest achieved an R² score of 0.8047 on the test set.
+### Linear Regression
 
-## Technologies Used
+Used as the baseline regression model.
 
-- Python
-- NumPy
-- Pandas
-- Scikit-learn
-- Joblib
-- Flask
-- HTML
-- CSS
+### Decision Tree Regressor
 
-## Project Structure
+Used to capture nonlinear relationships between the features and target variable.
+
+### Random Forest Regressor
+
+The Random Forest model produced the strongest performance and was selected as the final model.
+
+The final model uses:
 
 ```text
-California Housing Project
-│
-├── templates/
-│   └── index.html
-│
-├── app.py
-├── california_housing_pipeline.pkl
-├── requirements.txt
-└── README.md
-Flask Application
-
-The Flask application:
-
-->Loads the trained ML Pipeline
-->Accepts eight house-related input features
-->Sends the data to the trained model
-->Generates a predicted house value
-->Displays the prediction through the web interface
-->Handles invalid input using error handling
-
-
-How to Run
-1. Clone the repository
-
-git clone <your-github-repository-url>
-
-2. Open the project directory
-
-cd California-Housing-Project
-
-3. Install dependencies
-
-pip install -r requirements.txt
-
-4. Run the Flask application
-
-python app.py
-
-5. Open the application
-
-Open your browser and visit:
-
-http://127.0.0.1:5000
-Example Prediction
-
-Example input:
-
-Median Income: 10
-House Age: 15
-Average Rooms: 5
-Average Bedrooms: 2
-Population: 1200
-Average Occupancy: 3
-Latitude: 34
-Longitude: -134
-
-The application returns the predicted house value in dollars.
-
-->Future Improvements
-->Add stronger input validation
-->Improve frontend design
-->Add prediction confidence/explanation
-->Deploy the application to a cloud platform
-->Add automated testing
-->Add API documentation
+RandomForestRegressor
+n_estimators = 50
+max_depth = 20
+min_samples_split = 2
+random_state = 42
