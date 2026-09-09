@@ -91,3 +91,196 @@ n_estimators = 50
 max_depth = 20
 min_samples_split = 2
 random_state = 42
+---
+
+## 📊 Model Performance
+
+The final Random Forest model achieved an R² score of approximately **0.80** on the test dataset.
+
+This indicates that the model explains approximately 80% of the variation in California house values in the evaluation dataset.
+
+---
+
+## 🖥️ Web Application
+
+The trained Machine Learning model is integrated into a Flask web application.
+
+Users can enter the following property information:
+
+- Median Income
+- House Age
+- Average Rooms
+- Average Bedrooms
+- Population
+- Average Occupancy
+- Latitude
+- Longitude
+
+The application processes the input through the trained Random Forest model and returns the predicted house value.
+
+---
+
+## 🏗️ Project Architecture
+
+```text
+California Housing Dataset
+          │
+          ▼
+   Data Exploration
+          │
+          ▼
+   Train/Test Split
+          │
+          ▼
+   Model Development
+          │
+          ├── Linear Regression
+          │
+          ├── Decision Tree
+          │
+          └── Random Forest
+                    │
+                    ▼
+              GridSearchCV
+                    │
+                    ▼
+               Best Model
+                    │
+                    ▼
+              Joblib + Gzip
+                    │
+                    ▼
+              Flask Backend
+                    │
+                    ▼
+             HTML + CSS UI
+                    │
+                    ▼
+                 Vercel
+                    │
+                    ▼
+             Live Prediction
+## Project Structure
+california-house-price-prediction/
+│
+├── api/
+│   └── index.py
+│
+├── templates/
+│   └── index.html
+│
+├── app.py
+├── california_housing_pipeline.pkl.gz
+├── requirements.txt
+├── vercel.json
+├── README.md
+└── .gitignore
+
+🛠️ Tech Stack
+Programming Language
+Python
+
+Data Science & Machine Learning
+NumPy
+Pandas
+Scikit-learn
+Random Forest Regression
+Decision Tree Regression
+Linear Regression
+GridSearchCV
+
+Model Evaluation
+R² Score
+Mean Squared Error (MSE)
+Root Mean Squared Error (RMSE)
+
+Backend & Deployment
+Flask
+Joblib
+Gzip
+Vercel
+
+Frontend
+HTML5
+CSS3
+
+Version Control
+Git
+GitHub
+
+---
+
+## 📦 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Harishkumar2828/california-house-price-prediction.git
+
+Navigate to Project Directory:
+```bash
+cd california-house-price-prediction
+
+Install the required dependencies:
+```bash
+pip install -r requirements.txt
+
+▶️ Run Locally
+Start the Flask application:
+```bash
+python app.py
+
+Then open:
+http://127.0.0.1:5000
+
+🔮 Example Prediction
+
+Example input:
+
+Feature	Value
+Median Income	5.0
+House Age	20
+Average Rooms	5.0
+Average Bedrooms	1.0
+Population	1000
+Average Occupancy	3.0
+Latitude	34.0
+Longitude	-118.0
+
+The application processes these values through the trained Random Forest model and returns the predicted house value.
+
+💡 Key Learning Outcomes
+
+Through this project, I gained practical experience with:
+
+End-to-end Machine Learning workflows
+Regression algorithms
+Model comparison
+Hyperparameter tuning
+Cross-validation
+Model evaluation
+Scikit-learn pipelines
+Model serialization
+Flask web application development
+Git and GitHub
+Cloud deployment
+Integrating Machine Learning models into a web application
+🔮 Future Improvements
+Improve input validation
+Improve the user interface
+Add feature importance visualization
+Add prediction explanations
+Add automated testing
+Add API documentation
+Improve model performance
+Add application monitoring and logging
+👨‍💻 Author
+
+Harish Kumar
+
+GitHub:
+https://github.com/Harishkumar2828
+
+⭐ Support
+
+If you found this project useful, consider giving the repository a ⭐ on GitHub.
